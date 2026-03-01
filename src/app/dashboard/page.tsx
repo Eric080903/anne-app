@@ -53,16 +53,21 @@ function WatchlistCard() {
 
       {data && data.length > 0 && (
         <ul className="space-y-2">
-          {data.map((symbol) => (
+          {data.map((item: any) => (
             <li
-              key={symbol}
+              key={item.symbol || item}
               className="flex items-center justify-between px-3 py-2 rounded-lg bg-zinc-800/50 hover:bg-zinc-800 transition-colors"
             >
               <Link
-                href={`/market?symbol=${encodeURIComponent(symbol)}`}
-                className="text-sm font-medium text-white hover:text-blue-400 transition-colors"
+                href={`/market/${encodeURIComponent(item.symbol || item)}`}
+                className="flex flex-col"
               >
-                {symbol}
+                <span className="text-sm font-medium text-white hover:text-blue-400 transition-colors">
+                  {item.symbol || item}
+                </span>
+                {item.name && (
+                  <span className="text-xs text-zinc-500">{item.name}</span>
+                )}
               </Link>
               <span className="text-xs text-zinc-500">View</span>
             </li>

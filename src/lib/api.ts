@@ -174,7 +174,7 @@ const api = {
       return apiFetch('/api/system/budget');
     },
 
-    watchlist(): Promise<string[]> {
+    watchlist(): Promise<{ symbol: string; name?: string; addedAt: string }[]> {
       return apiFetch('/api/system/watchlist');
     },
 
